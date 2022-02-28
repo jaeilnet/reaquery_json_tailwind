@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  start:
+    build: react-query_todo
+    image: todo
+    networks:
+      - todoList
+    ports:
+      - 3100:3000
+
+  json-server:
+    build: json-server
+    image: server
+    networks:
+      - todoList
+    ports:
+      - 4000:4000
+
+  # json-server2:
+  #   image: server:latest
+  #   networks:
+  #     - todoList
+
+  # json-server3:
+  #   image: server:latest
+  #   networks:
+  #     - todoList
+
+networks:
+  todoList:
+    driver: bridge
